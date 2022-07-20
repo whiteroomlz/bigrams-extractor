@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.whiteroomlz.controller.PrimaryController">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="%file_menu_label">
+                    <MenuItem text="%file_menu_open_label" onAction="#onOpenFileAction"/>
+                    <MenuItem text="%file_menu_export_label" onAction="#onExportAction"/>
+                </Menu>
+                <Menu text="%help_menu_label">
+                    <MenuItem text="%help_menu_about_label" onAction="#onAboutProgramAction"/>
+                </Menu>
+            </MenuBar>
+            <HBox alignment="CENTER_LEFT" spacing="7">
+                <padding>
+                    <Insets top="5" right="7" bottom="5" left="7"/>
+                </padding>
+                <Label text="%lower_bound_label"/>
+                <TextField fx:id="lowerBoundField" prefWidth="60"/>
+                <Label text="%upper_bound_label"/>
+                <TextField fx:id="upperBoundField" prefWidth="60"/>
+                <Separator orientation="VERTICAL"/>
+                <Label text="%regexp_pattern_label"/>
+                <TextField fx:id="regexpPatternField" HBox.hgrow="ALWAYS"/>
+                <Separator orientation="VERTICAL"/>
+                <Button text="%select_all_label" onAction="#onSelectAll"/>
+                <Button text="%unselect_all_label" onAction="#onUnselectAll"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="mainTable" editable="true">
+            <placeholder>
+                <Label text="%main_table_placeholder"/>
+            </placeholder>
+            <columns>
+                <TableColumn fx:id="significanceColumn" text="%main_table_significance_label"/>
+                <TableColumn fx:id="parentColumn" text="%main_table_concept_label" editable="false"/>
+                <TableColumn fx:id="frequencyColumn" text="%main_table_frequency_label" editable="false"/>
+                <TableColumn fx:id="conceptWeightColumn" text="%main_table_concept_weight_label" editable="false"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox alignment="BASELINE_RIGHT" spacing="7">
+            <padding>
+                <Insets top="5" right="7" bottom="5" left="7"/>
+            </padding>
+            <Label text="%selected_concepts_label"/>
+            <Label fx:id="selectedConceptsCount" text="0"/>
+            <Separator orientation="VERTICAL"/>
+            <Label text="%selected_pairs_label"/>
+            <Label fx:id="selectedPairsCount" text="0"/>
+        </HBox>
+    </bottom>
+</BorderPane>
